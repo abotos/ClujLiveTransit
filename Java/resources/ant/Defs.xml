@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<project name="Defs">
+    <property name="db.system.user" value="system"/>
+    <property name="db.system.password" value="system"/>
+
+    <property name="db.user" value="BUS_TRACKER"/>
+    <property name="db.password" value="welcome"/>
+
+    <property name="db.host" value="localhost"/>
+    <property name="db.service" value="ORACLE"/>
+    <property name="db.port" value="1521"/>
+
+    <property name="db.driver_class" value="oracle.jdbc.driver.OracleDriver"/>
+    <property name="db.url" value="jdbc:oracle:thin:@//${db.host}:${db.port}/${db.service}"/>
+
+    <condition property="maven.local.repository" value="c:/.m2/repository" else="${user.home}/.m2/repository">
+        <resourceexists>
+            <file file="c:/.m2/repository"/>
+        </resourceexists>
+    </condition>
+    <echo message="Maven local repo path is: ${maven.local.repository}"/>
+
+    <!-- JDBC driver downloaded by Maven to its local repository (you'll need to run an initial Maven compile to download it) -->
+    <property name="db.driver.groupId.dir" value="oracle/jdbc/driver"/>
+    <property name="db.driver.artifactId" value="ojdbc6"/>
+    <property name="db.driver.version" value="11.2.0.3"/>
+    <property name="db.classpath"
+              value="${maven.local.repository}/${db.driver.groupId.dir}/${db.driver.artifactId}/${db.driver.version}/${db.driver.artifactId}-${db.driver.version}.jar"/>
+
+    <property name="sql.dir" value="../sql"/>
+    <property name="temp.sql.dir" value="../../target/sql"/>
+
+    <property name="project.root" value="../../.."/>
+</project>

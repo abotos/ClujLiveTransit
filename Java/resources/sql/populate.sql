@@ -1,0 +1,48 @@
+-- --#################INSERTING DATA INTO BUS#############################
+INSERT INTO BUS
+(ID, BUSINESS_ID, NAME, DISPLAY_IMAGE)
+VALUES
+  (S_BUS.NEXTVAL, '24_1', 'Str.Bucium - Str.Unirii', '24')
+/
+
+INSERT INTO BUS
+(ID, BUSINESS_ID, NAME, DISPLAY_IMAGE)
+VALUES
+  (S_BUS.NEXTVAL, '24_2', 'Str.Unirii - Str.Bucium', '24')
+/
+
+INSERT INTO BUS
+(ID, BUSINESS_ID, NAME, DISPLAY_IMAGE)
+VALUES
+  (S_BUS.NEXTVAL, '6_1', 'Str.Bucium - Str Aurel Vlaicu', '6')
+/
+
+INSERT INTO BUS
+(ID, BUSINESS_ID, NAME, DISPLAY_IMAGE)
+VALUES
+  (S_BUS.NEXTVAL, '6_2', 'Str. Aurel Vlaicu - Str. Bucium', '6')
+/
+
+INSERT INTO BUS
+(ID, BUSINESS_ID, NAME, DISPLAY_IMAGE)
+VALUES
+  (S_BUS.NEXTVAL, '7_1', 'Str. Izlazului - Str. Aurel Vlaicu', '7')
+/
+
+INSERT INTO BUS
+(ID, BUSINESS_ID, NAME, DISPLAY_IMAGE)
+VALUES
+  (S_BUS.NEXTVAL, '7_2', 'Str. Aurel Vlaicu - Str. Izlazului', '7')
+/
+
+INSERT INTO BUS
+(ID, BUSINESS_ID, NAME, DISPLAY_IMAGE)
+VALUES
+  (S_BUS.NEXTVAL, '35_1', 'Cart. Zorilor - P-ta Garii', '35')
+/
+
+INSERT INTO BUS
+(ID, BUSINESS_ID, NAME, DISPLAY_IMAGE)
+VALUES
+  (S_BUS.NEXTVAL, '35_2', 'P-ta Garii - Cart. Zorilor', '35')
+/

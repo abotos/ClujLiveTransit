@@ -1,0 +1,54 @@
+<?xml version="1.0"?>
+<project name="Database" default="reCreateSchema">
+    <import file="Defs.xml"/>
+
+    <target name="reCreateSchema" depends="reCreateUser, createSchema, populateSchema"/>
+
+    <target name="reCreateUser">
+        <property name="reCreateUserSQL" value="${temp.sql.dir}/reCreateUser.sql"/>
+
+        <!--insert variables in the sql files-->
+        <loadfile property="dropUserSQL" srcFile="${sql.dir}/dropUser.sql">
+            <filterchain>
+                <expandproperties/>
+            </filterchain>
+        </loadfile>
+        <echo message="${dropUserSQL}${line.separator}" file="${reCreateUserSQL}"/>
+
+        <loadfile property="createUserSQL" srcFile="${sql.dir}/createUser.sql">
+            <filterchain>
+                <expandproperties/>
+            </filterchain>
+        </loadfile>
+        <echo message="${createUserSQL}" file="${reCreateUserSQL}" append="true"/>
+
+        <sql src="${reCreateUserSQL}" driver="${db.driver_class}" url="${db.url}" userid="${db.system.user}" password="${db.system.password}" classpath="${db.classpath}" delimiter="/"/>
+    </target>
+
+    <target name="createSchema">
+        <sql driver="${db.driver_class}" url="${db.url}" userid="${db.user}" password="${db.password}" classpath="${db.classpath}" delimiter="/">
+            <transaction src="${sql.dir}/createSchema.sql"/>
+        </sql>
+    </target>
+
+    <target name="populateSchema">
+        <sql driver="${db.driver_class}" url="${db.url}" userid="${db.user}" password="${db.password}" classpath="${db.classpath}" delimiter="/">
+            <transaction src="${sql.dir}/populate.sql"/>
+            <transaction src="${sql.dir}/populateStations.sql"/>
+            <transaction src="${sql.dir}/populateBusStations.sql"/>
+        </sql>
+    </target>
+
+    <target name="dropSchema">
+        <sql driver="${db.driver_class}" url="${db.url}" userid="${db.user}" password="${db.password}" classpath="${db.classpath}" delimiter="/">
+            <transaction src="${sql.dir}/dropSchema.sql"/>
+        </sql>
+    </target>
+
+    <target name="runSqlScript">
+        <property name="sqlScriptFile" value=""/>
+        <sql driver="${db.driver_class}" url="${db.url}" userid="${db.user}" password="${db.password}" classpath="${db.classpath}" delimiter="/">
+            <transaction src="${sqlScriptFile}"/>
+        </sql>
+    </target>
+</project>

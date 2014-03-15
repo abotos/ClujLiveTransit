@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+    <style type="text/css">
+        html { height: 100% }
+        body { height: 100%; margin: 0; padding: 0 }
+        #station {padding-top: 7px; padding-bottom: 7px; font-size: large; font-weight: bolder}
+        #map-canvas { height: 80%; width: 90%; margin-left: 5%; margin-right: 5%}
+        .centered {margin-left: 5%; margin-right: 5%}
+        #buses {width: 100%}
+
+        table.reference, table.tecspec {
+            border-collapse: collapse;
+            width: 100%;
+        }
+        table.reference tr:nth-child(2n+1) {
+            background-color: #e9e5dc;
+        }
+        table.reference tr:nth-child(2n) {
+            background-color: #FFFFFF;
+        }
+        table.reference tr.fixzebra {
+            background-color: #F6F4F0;
+        }
+        table.reference th {
+            background-color: #555555;
+            border: 1px solid #555555;
+            color: #FFFFFF;
+            padding: 3px;
+            text-align: left;
+            vertical-align: top;
+        }
+        table.reference th a:link, table.reference th a:visited {
+            color: #FFFFFF;
+        }
+        table.reference th a:hover, table.reference th a:active {
+            color: #EE872A;
+        }
+        table.reference td {
+            border: 1px solid #D4D4D4;
+            padding: 4px 5px;
+            vertical-align: middle;
+        }
+        table.reference td.example_code {
+            vertical-align: bottom;
+        }
+        table.reference td.bus_icon {
+            width: 8%;
+        }
+        table.reference td.bus {
+            width: 42%;
+        }
+        table.reference td.eta {
+            width: 25%;
+        }
+        table.reference td.info {
+            width: 25%;
+        }
+
+        table.reference caption {
+            text-align: left;
+        }
+        body, p, h1, h2, h3, h4, table, td, th, ul, ol, textarea, input {
+            font-family: verdana,helvetica,arial,sans-serif;
+        }
+    </style>
+    <script type="text/javascript"
+            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBAIxWg-iiYcG5HjexBRVPS0vJTFdR_yGA&sensor=false">
+    </script>
+    <script type="text/javascript" src="js/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="js/busTracker.js"></script>
+    <script type="text/javascript">
+        $(document).ready(onPageReady);
+    </script>
+</head>
+<body>
+<div id="station" class="centered"></div>
+<div class="centered">
+    <table id="buses" class="reference">
+        <caption>Buses approaching your station:</caption>
+    </table>
+</div>
+<div id="map-canvas"></div>
+</body>
+</html>

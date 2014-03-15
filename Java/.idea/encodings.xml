@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="Encoding" useUTFGuessing="true" native2AsciiForPropertiesFiles="false">
+    <file url="file://$PROJECT_DIR$/resources/ant/Database.xml" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/resources/ant/Defs.xml" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/resources/sql/createSchema.sql" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/resources/sql/createUser.sql" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/resources/sql/deleteTestData.sql" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/resources/sql/dropSchema.sql" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/resources/sql/dropUser.sql" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/resources/sql/populate.sql" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/webapp/WEB-INF/web.xml" charset="UTF-8" />
+  </component>
+</project>
+

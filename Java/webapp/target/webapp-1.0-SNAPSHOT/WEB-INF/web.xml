@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  ~ *************************************************************************
+  ~ Copyright (C) FRS Belgium NV ("FRSGlobal"). All rights reserved.
+  ~
+  ~ This computer program is protected by copyright law and international
+  ~ treaties. Unauthorized reproduction or distribution of this program,
+  ~ or any portion of it, may result in severe civil and criminal penalties,
+  ~ and will be prosecuted to the maximum extent possible under the law.
+  ~ *************************************************************************
+  -->
+
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee"
+         xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+         version="2.5">
+
+    <display-name>BusTracker Web Application</display-name>
+    <description>BusTracker Web Application</description>
+
+    <servlet>
+        <servlet-name>Initializer</servlet-name>
+        <servlet-class>org.cluj.bus.servlet.InitServlet</servlet-class>
+
+        <init-param>
+            <param-name>initFile</param-name>
+            <param-value>/WEB-INF/conf/initDatabase.xml</param-value>
+        </init-param>
+
+        <load-on-startup>0</load-on-startup>
+    </servlet>
+
+    <servlet>
+        <servlet-name>TripStatus</servlet-name>
+        <servlet-class>org.cluj.bus.servlet.TripStatusServlet</servlet-class>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+
+    <servlet>
+        <servlet-name>BusUpdate</servlet-name>
+        <servlet-class>org.cluj.bus.servlet.BusUpdateServlet</servlet-class>
+        <load-on-startup>2</load-on-startup>
+    </servlet>
+
+    <servlet>
+        <servlet-name>StationInfo</servlet-name>
+        <servlet-class>org.cluj.bus.servlet.StationInfoServlet</servlet-class>
+        <load-on-startup>2</load-on-startup>
+    </servlet>
+
+    <servlet>
+        <servlet-name>BusInfo</servlet-name>
+        <servlet-class>org.cluj.bus.servlet.BusInfoServlet</servlet-class>
+        <load-on-startup>3</load-on-startup>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>Initializer</servlet-name>
+        <url-pattern>/main</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>TripStatus</servlet-name>
+        <url-pattern>/tripStatus/*</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>BusUpdate</servlet-name>
+        <url-pattern>/busUpdate/*</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>StationInfo</servlet-name>
+        <url-pattern>/stationInfo/*</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>BusInfo</servlet-name>
+        <url-pattern>/busInfo/*</url-pattern>
+    </servlet-mapping>
+
+    <session-config>
+        <session-timeout>60</session-timeout>
+    </session-config>
+
+</web-app>
