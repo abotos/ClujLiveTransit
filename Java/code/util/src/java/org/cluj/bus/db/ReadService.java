@@ -43,6 +43,17 @@ public class ReadService implements IReadService
     }
 
     @Override
+    public Collection<Object> load(Class clazz)
+    {
+        final Session session = HibernateUtil.openSession();
+        final Transaction transaction = session.beginTransaction();
+        final Collection<Object> objects = session.createCriteria(clazz).list();
+        transaction.commit();
+        session.close();
+        return objects;
+    }
+
+    @Override
     public Collection<Object> load(Class clazz, String propertyName, Object value)
     {
         final Session session = HibernateUtil.openSession();

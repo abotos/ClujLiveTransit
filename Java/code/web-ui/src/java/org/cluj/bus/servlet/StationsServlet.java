@@ -15,6 +15,7 @@ import org.cluj.bus.Station;
 import org.cluj.bus.convert.StationConverter;
 import org.cluj.bus.db.HibernateServiceProvider;
 import org.cluj.bus.db.IReadService;
+import org.cluj.bus.model.AllStationsDTO;
 import org.cluj.bus.model.StationInfo;
 
 import javax.servlet.ServletException;
@@ -22,25 +23,34 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Collection;
 
-public class StationInfoServlet extends HttpServlet
+public class StationsServlet extends HttpServlet
 {
 
     @Override
-    protected void doPost(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse) throws ServletException, IOException
+    protected void doGet(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse) throws ServletException, IOException
     {
-        String stationId = httpServletRequest.getParameter(ServletUtils.STATION_ID_PARAMETER_KEY);
-
-        ServletUtils.sendResponse(httpServletResponse, getResponseString(stationId));
+        ServletUtils.sendResponse(httpServletResponse, getResponseString());
     }
 
-    private String getResponseString(String stationId)
+    private String getResponseString()
     {
         IReadService readService = HibernateServiceProvider.getINSTANCE().getReadService();
-        Station station = (Station) readService.loadFirst(Station.class, "businessId", stationId);
 
-        StationInfo stationInfo = StationConverter.getStationInfo(station);
+        Collection<Object> allStations = readService.load(Station.class);
 
-        return new Gson().toJson(stationInfo);
+        Collection<StationInfo> allStationInfos = new ArrayList<StationInfo>();
+
+        for (Object station : allStations)
+        {
+            allStationInfos.add(StationConverter.getStationInfo((Station) station));
+        }
+
+        AllStationsDTO response = new AllStationsDTO();
+        response.setAllStations(allStationInfos);
+
+        return new Gson().toJson(response);
     }
 }

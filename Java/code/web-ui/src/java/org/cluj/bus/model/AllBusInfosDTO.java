@@ -8,19 +8,21 @@
  * and will be prosecuted to the maximum extent possible under the law.
  * *************************************************************************
  */
+package org.cluj.bus.model;
 
-package org.cluj.bus.db;
-
-import java.io.Serializable;
 import java.util.Collection;
 
-public interface IReadService
+public class AllBusInfosDTO
 {
-    Object load(Class clazz, Serializable id);
+    Collection<BusInfo> allBusInfos;
 
-    Object loadFirst(Class clazz, String propertyName, Object value);
+    public Collection<BusInfo> getAllBusInfos()
+    {
+        return allBusInfos;
+    }
 
-    Collection<Object> load(Class clazz);
-
-    Collection<Object> load(Class clazz, String propertyName, Object value);
+    public void setAllBusInfos(Collection<BusInfo> allBusInfos)
+    {
+        this.allBusInfos = allBusInfos;
+    }
 }

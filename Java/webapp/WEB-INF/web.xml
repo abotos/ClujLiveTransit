@@ -53,6 +53,12 @@
         <load-on-startup>3</load-on-startup>
     </servlet>
 
+    <servlet>
+        <servlet-name>Stations</servlet-name>
+        <servlet-class>org.cluj.bus.servlet.StationsServlet</servlet-class>
+        <load-on-startup>4</load-on-startup>
+    </servlet>
+
     <servlet-mapping>
         <servlet-name>Initializer</servlet-name>
         <url-pattern>/main</url-pattern>
@@ -76,6 +82,11 @@
     <servlet-mapping>
         <servlet-name>BusInfo</servlet-name>
         <url-pattern>/busInfo/*</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>Stations</servlet-name>
+        <url-pattern>/getAllStations/*</url-pattern>
     </servlet-mapping>
 
     <session-config>

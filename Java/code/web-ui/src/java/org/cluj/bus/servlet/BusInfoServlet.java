@@ -14,6 +14,7 @@ import com.google.gson.Gson;
 import org.cluj.bus.*;
 import org.cluj.bus.db.HibernateServiceProvider;
 import org.cluj.bus.db.HibernateUtil;
+import org.cluj.bus.model.AllBusInfosDTO;
 import org.cluj.bus.model.BusInfo;
 import org.cluj.bus.model.IndividualBusInfo;
 import org.cluj.bus.model.MapBoundsInfo;
@@ -150,7 +151,10 @@ public class BusInfoServlet extends HttpServlet
             }
         }
 
-        return new Gson().toJson(busInfos);
+        AllBusInfosDTO response = new AllBusInfosDTO();
+        response.setAllBusInfos(busInfos);
+
+        return new Gson().toJson(response);
     }
 
     private IndividualBusInfo getIndividualBusInfo(BusLocationUpdate busLocationUpdate)
