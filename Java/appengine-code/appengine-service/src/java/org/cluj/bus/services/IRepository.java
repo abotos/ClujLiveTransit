@@ -19,6 +19,8 @@ public interface IRepository<T> extends Serializable
 {
     void save(T entity);
 
+    T findFirst(String field, Object value);
+
     List<T> findAll(ISpecification<T> specification);
 
     List<T> findAll();

@@ -53,8 +53,8 @@ public class BotThread extends Thread
     {
         this.busId = busId;
         this.wayPointInfoCollection = wayPointInfoCollection;
-        this.busUpdateServletUrl = String.format("http://%s:8080/bustracker/busUpdate", host);
-        this.tripStatusServletUrl = String.format("http://%s:8080/bustracker/tripStatus", host);
+        this.busUpdateServletUrl = String.format("http://%s/busUpdate", host);
+        this.tripStatusServletUrl = String.format("http://%s/tripStatus", host);
     }
 
     public void setRunning(boolean running)

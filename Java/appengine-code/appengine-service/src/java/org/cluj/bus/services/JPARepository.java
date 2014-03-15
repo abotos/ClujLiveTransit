@@ -16,6 +16,7 @@ import org.cluj.bus.ISpecification;
 import javax.persistence.EntityManager;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Path;
 import javax.persistence.criteria.Root;
 import java.util.List;
 
@@ -47,6 +48,18 @@ public class JPARepository<T> implements IRepository<T>
                 entityManager.getTransaction().rollback();
             }
         }
+    }
+
+    public T findFirst(String field, Object value)
+    {
+        CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
+        final CriteriaQuery<T> criteriaQuery = criteriaBuilder.createQuery(clazz);
+        final Root<T> root = criteriaQuery.from(clazz);
+        criteriaQuery.select(root);
+        final Path<Object> path = root.get(field);
+        criteriaQuery.where(criteriaBuilder.equal(path, value));
+
+        return entityManager.createQuery(criteriaQuery).getResultList().get(0);
     }
 
     @Override

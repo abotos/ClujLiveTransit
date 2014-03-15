@@ -28,7 +28,7 @@ import java.util.StringTokenizer;
 public class BusBot
 {
     /**
-     * @param args the first parameter is the server host name or ip address
+     * @param args the first parameter is the server host name or ip address including port
      *             the second parameter has to be the bus id
      *             the third parameter is a file with the coordinate points
      * @throws InterruptedException
