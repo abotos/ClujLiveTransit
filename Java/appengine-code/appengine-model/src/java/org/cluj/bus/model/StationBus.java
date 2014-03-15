@@ -14,7 +14,7 @@ package org.cluj.bus.model;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "STATION_BUS_VIEW")
+@Table(name = "STATION_BUS")
 public class StationBus
 {
     @Id
