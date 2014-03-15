@@ -8,25 +8,34 @@
  * and will be prosecuted to the maximum extent possible under the law.
  * *************************************************************************
  */
-package org.cluj.bus.services;
 
-import java.io.Serializable;
-import java.util.List;
-import java.util.Map;
+package org.cluj.bus.model;
 
-public interface IRepository<T> extends Serializable
+import org.cluj.bus.pojo.Coordinate;
+
+public class MapBoundsInfo
 {
-    void save(T entity);
+    private Coordinate northEast;
 
-    T findFirst(String field, Object value);
+    private Coordinate southWest;
 
-    List<T> findAll(Map<String, Object> restrictions);
+    public Coordinate getNorthEast()
+    {
+        return northEast;
+    }
 
-    List<T> findAll(String field, Object value);
+    public void setNorthEast(Coordinate northEast)
+    {
+        this.northEast = northEast;
+    }
 
-    List<T> findAll();
+    public Coordinate getSouthWest()
+    {
+        return southWest;
+    }
 
-    void flush();
-
-    void close();
+    public void setSouthWest(Coordinate southWest)
+    {
+        this.southWest = southWest;
+    }
 }

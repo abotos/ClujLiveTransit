@@ -11,14 +11,13 @@
 package org.cluj.bus.services;
 
 import org.cluj.bus.EMFService;
-import org.cluj.bus.ISpecification;
 
 import javax.persistence.EntityManager;
-import javax.persistence.criteria.CriteriaBuilder;
-import javax.persistence.criteria.CriteriaQuery;
-import javax.persistence.criteria.Path;
-import javax.persistence.criteria.Root;
+import javax.persistence.criteria.*;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
 public class JPARepository<T> implements IRepository<T>
 {
@@ -52,7 +51,7 @@ public class JPARepository<T> implements IRepository<T>
 
     public T findFirst(String field, Object value)
     {
-        CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
+        final CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
         final CriteriaQuery<T> criteriaQuery = criteriaBuilder.createQuery(clazz);
         final Root<T> root = criteriaQuery.from(clazz);
         criteriaQuery.select(root);
@@ -63,26 +62,44 @@ public class JPARepository<T> implements IRepository<T>
     }
 
     @Override
-    public List<T> findAll(ISpecification<T> specification)
+    public List<T> findAll(Map<String, Object> restrictions)
     {
-        CriteriaBuilder cb = entityManager.getCriteriaBuilder();
-        CriteriaQuery<T> q = cb.createQuery(clazz);
-        Root<T> root = q.from(clazz);
+        final CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
+        final CriteriaQuery<T> criteriaQuery = criteriaBuilder.createQuery(clazz);
+        final Root<T> root = criteriaQuery.from(clazz);
+        final List<Predicate> predicates = new ArrayList<Predicate>();
+        criteriaQuery.select(root);
+        final Set<Map.Entry<String, Object>> entries = restrictions.entrySet();
+        for (Map.Entry<String, Object> entry : entries)
+        {
+            predicates.add(criteriaBuilder.equal(root.get(entry.getKey()), entry.getValue()));
+        }
+        criteriaQuery.where(predicates.toArray(new Predicate[predicates.size()]));
+        return entityManager.createQuery(criteriaQuery).getResultList();
+    }
 
-        q.where(specification.toPredicate(root, q, cb));
+    //TODO: refactor this
+    public List<T> findAll(String field, Object value)
+    {
+        final CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
+        final CriteriaQuery<T> criteriaQuery = criteriaBuilder.createQuery(clazz);
+        final Root<T> root = criteriaQuery.from(clazz);
+        criteriaQuery.select(root);
+        final Path<Object> path = root.get(field);
+        criteriaQuery.where(criteriaBuilder.equal(path, value));
 
-        return entityManager.createQuery(q).getResultList();
+        return entityManager.createQuery(criteriaQuery).getResultList();
     }
 
     @Override
     public List<T> findAll()
     {
-        CriteriaBuilder cb = entityManager.getCriteriaBuilder();
-        CriteriaQuery<T> q = cb.createQuery(clazz);
-        Root<T> root = q.from(clazz);
-        q.select(root);
+        final CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
+        final CriteriaQuery<T> criteriaQuery = criteriaBuilder.createQuery(clazz);
+        final Root<T> root = criteriaQuery.from(clazz);
+        criteriaQuery.select(root);
 
-        return entityManager.createQuery(q).getResultList();
+        return entityManager.createQuery(criteriaQuery).getResultList();
     }
 
     @Override
