@@ -13,11 +13,16 @@
     <modules>
         <module>code</module>
         <module>webapp</module>
+        <module>appengine-webapp</module>
+        <module>appengine-code</module>
     </modules>
 
     <properties>
         <java.version>1.7</java.version>
         <oracle.jdbc.driver.version>11.2.0.3</oracle.jdbc.driver.version>
+
+        <appengine.app.version>1</appengine.app.version>
+        <appengine.target.version>1.8.5</appengine.target.version>
     </properties>
 
     <build>

@@ -3,6 +3,9 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/BusTracker.iml" filepath="$PROJECT_DIR$/BusTracker.iml" />
+      <module fileurl="file://$PROJECT_DIR$/appengine-code/appengine-code.iml" filepath="$PROJECT_DIR$/appengine-code/appengine-code.iml" />
+      <module fileurl="file://$PROJECT_DIR$/appengine-code/appengine-model/appengine-model.iml" filepath="$PROJECT_DIR$/appengine-code/appengine-model/appengine-model.iml" />
+      <module fileurl="file://$PROJECT_DIR$/appengine-webapp/appengine-webapp.iml" filepath="$PROJECT_DIR$/appengine-webapp/appengine-webapp.iml" />
       <module fileurl="file://$PROJECT_DIR$/code/bus-bot/bus-bot.iml" filepath="$PROJECT_DIR$/code/bus-bot/bus-bot.iml" />
       <module fileurl="file://$PROJECT_DIR$/code/code.iml" filepath="$PROJECT_DIR$/code/code.iml" />
       <module fileurl="file://$PROJECT_DIR$/code/common/common.iml" filepath="$PROJECT_DIR$/code/common/common.iml" />

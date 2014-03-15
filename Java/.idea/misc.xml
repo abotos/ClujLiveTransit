@@ -4,6 +4,7 @@
     <entry_points version="2.0" />
   </component>
   <component name="FrameworkDetectionExcludesConfiguration">
+    <file type="google-app-engine" url="file://$PROJECT_DIR$/appengine-webapp" />
     <file type="hibernate" url="file://$PROJECT_DIR$/.tomcat/webapps/bustracker/WEB-INF/conf/initDatabase.xml" />
     <type id="web" />
   </component>

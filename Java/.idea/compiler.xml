@@ -22,6 +22,8 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <processorPath useClasspath="true" />
+        <module name="appengine-model" />
+        <module name="appengine-webapp" />
         <module name="bus-bot" />
         <module name="common" />
         <module name="model" />
@@ -31,6 +33,9 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
+      <module name="appengine-code" target="1.7" />
+      <module name="appengine-model" target="1.7" />
+      <module name="appengine-webapp" target="1.7" />
       <module name="bus-bot" target="1.7" />
       <module name="common" target="1.7" />
       <module name="model" target="1.7" />
