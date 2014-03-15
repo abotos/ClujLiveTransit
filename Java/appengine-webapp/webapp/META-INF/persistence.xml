@@ -5,6 +5,10 @@
     <persistence-unit name="transactions-optional">
         <provider>org.datanucleus.api.jpa.PersistenceProviderImpl</provider>
         <class>org.cluj.bus.model.Bus</class>
+        <class>org.cluj.bus.model.BusLocationUpdate</class>
+        <class>org.cluj.bus.model.Station</class>
+        <class>org.cluj.bus.model.StationBus</class>
+        <class>org.cluj.bus.model.Trip</class>
         <exclude-unlisted-classes>true</exclude-unlisted-classes>
         <properties>
             <property name="datanucleus.NontransactionalRead" value="true"/>
