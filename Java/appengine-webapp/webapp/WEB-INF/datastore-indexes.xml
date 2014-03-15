@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<datastore-indexes autoGenerate="true">
+    <datastore-index kind="BUS_LOCATION_UPDATE" ancestor="false" source="manual">
+        <property name="trip" direction="asc"/>
+        <property name="lastUpdate" direction="asc"/>
+    </datastore-index>
+</datastore-indexes>
