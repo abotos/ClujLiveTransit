@@ -50,14 +50,14 @@ public class BusInfoServlet extends HttpServlet
     private String getResponseString(String stationId, @Nullable MapBoundsInfo mapBoundsInfo)
     {
         final Station station = new JPARepository<>(Station.class).findFirst("businessId", stationId);
-        final List<StationBus> stationBuses = new JPARepository<>(StationBus.class).findAll("station", station);
+        final List<StationBus> stationBuses = new JPARepository<>(StationBus.class).findAll("station", station.getBusinessId());
 
 
         final Collection<BusInfo> busInfos = new ArrayList<>();
-        for (final Object stationBus : stationBuses)
+        for (final StationBus stationBus : stationBuses)
         {
             BusInfo busInfo;
-            final Bus bus = ((StationBus) stationBus).getBus();
+            final Bus bus = new JPARepository<>(Bus.class).findFirst("businessId", stationBus.getBus());
 
             final HashMap<String, Object> restrictions = new HashMap<>(2);
             restrictions.put("busId", bus.getBusinessId());

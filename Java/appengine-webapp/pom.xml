@@ -13,9 +13,6 @@
     <packaging>war</packaging>
 
     <build>
-        <sourceDirectory>src/java</sourceDirectory>
-        <testSourceDirectory>test/java</testSourceDirectory>
-
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -35,10 +32,34 @@
                             <targetPath>WEB-INF/classes/META-INF</targetPath>
                         </resource>
                         <resource>
-                            <directory>webapp</directory>
+                            <directory>src/pages</directory>
                             <filtering>false</filtering>
                             <includes>
                                 <include>**/*.html</include>
+                            </includes>
+                        </resource>
+                        <resource>
+                            <directory>src/js</directory>
+                            <filtering>false</filtering>
+                            <targetPath>js</targetPath>
+                            <includes>
+                                <include>**/*.js</include>
+                            </includes>
+                        </resource>
+                        <resource>
+                            <directory>src/css</directory>
+                            <filtering>false</filtering>
+                            <targetPath>css</targetPath>
+                            <includes>
+                                <include>**/*.css</include>
+                            </includes>
+                        </resource>
+                        <resource>
+                            <directory>src/images</directory>
+                            <filtering>false</filtering>
+                            <targetPath>images</targetPath>
+                            <includes>
+                                <include>**/*.png</include>
                             </includes>
                         </resource>
                     </webResources>

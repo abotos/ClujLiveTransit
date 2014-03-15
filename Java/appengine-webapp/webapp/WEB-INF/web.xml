@@ -27,15 +27,21 @@
     </servlet>
 
     <servlet>
+        <servlet-name>StationInfo</servlet-name>
+        <servlet-class>org.cluj.bus.servlet.StationInfoServlet</servlet-class>
+        <load-on-startup>3</load-on-startup>
+    </servlet>
+
+    <servlet>
         <servlet-name>BusInfo</servlet-name>
         <servlet-class>org.cluj.bus.servlet.BusInfoServlet</servlet-class>
-        <load-on-startup>3</load-on-startup>
+        <load-on-startup>4</load-on-startup>
     </servlet>
 
     <servlet>
         <servlet-name>Stations</servlet-name>
         <servlet-class>org.cluj.bus.servlet.StationsServlet</servlet-class>
-        <load-on-startup>4</load-on-startup>
+        <load-on-startup>5</load-on-startup>
     </servlet>
 
     <servlet-mapping>
@@ -46,6 +52,11 @@
     <servlet-mapping>
         <servlet-name>BusUpdate</servlet-name>
         <url-pattern>/busUpdate/*</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>StationInfo</servlet-name>
+        <url-pattern>/stationInfo/*</url-pattern>
     </servlet-mapping>
 
     <servlet-mapping>

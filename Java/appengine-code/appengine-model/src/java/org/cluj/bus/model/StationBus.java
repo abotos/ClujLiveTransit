@@ -21,11 +21,11 @@ public class StationBus
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @OneToOne
-    private Station station;
+    @Column
+    private String station;
 
-    @OneToOne
-    private Bus bus;
+    @Column
+    private String bus;
 
     @Column
     private Long stationOrder;
@@ -40,22 +40,22 @@ public class StationBus
         this.id = id;
     }
 
-    public Station getStation()
+    public String getStation()
     {
         return station;
     }
 
-    public void setStation(Station station)
+    public void setStation(String station)
     {
         this.station = station;
     }
 
-    public Bus getBus()
+    public String getBus()
     {
         return bus;
     }
 
-    public void setBus(Bus bus)
+    public void setBus(String bus)
     {
         this.bus = bus;
     }
