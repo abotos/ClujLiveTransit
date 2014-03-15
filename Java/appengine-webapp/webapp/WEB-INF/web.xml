@@ -14,6 +14,16 @@
         <auth-constraint/>
     </security-constraint>
 
+    <servlet>
+        <servlet-name>Stations</servlet-name>
+        <servlet-class>org.cluj.bus.servlet.StationsServlet</servlet-class>
+        <load-on-startup>4</load-on-startup>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>Stations</servlet-name>
+        <url-pattern>/getAllStations/*</url-pattern>
+    </servlet-mapping>
 
     <!-- Welcome page -->
     <welcome-file-list>

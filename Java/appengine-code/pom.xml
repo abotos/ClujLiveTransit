@@ -5,6 +5,8 @@
     <modelVersion>4.0.0</modelVersion>
     <modules>
         <module>appengine-model</module>
+        <module>appengine-service</module>
+        <module>appengine-web-ui</module>
     </modules>
     <parent>
         <artifactId>BusTracker</artifactId>
