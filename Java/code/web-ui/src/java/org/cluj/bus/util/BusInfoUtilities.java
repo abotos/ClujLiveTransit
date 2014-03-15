@@ -14,6 +14,7 @@ import org.cluj.bus.BusLocationUpdate;
 import org.cluj.bus.Station;
 import org.cluj.bus.model.MapBoundsInfo;
 import org.cluj.bus.pojo.Coordinate;
+import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 
@@ -24,13 +25,19 @@ public class BusInfoUtilities
     public static final int MINUTES_IN_A_DAY = 1440;
     public static final int MINUTE_IN_MILLISECONDS = 60000;
 
-    public static boolean isInViewPort(BusLocationUpdate latest, MapBoundsInfo mapBoundsInfo)
+    public static boolean isInViewPort(BusLocationUpdate latest, @Nullable MapBoundsInfo mapBoundsInfo)
     {
-        Coordinate southWest = mapBoundsInfo.getSouthWest();
-        Coordinate northEast = mapBoundsInfo.getNorthEast();
-        Double latitude = latest.getLatitude();
-        Double longitude = latest.getLongitude();
-        return (latitude <= northEast.getLatitude()) && (latitude >= southWest.getLatitude()) && (longitude >= southWest.getLongitude()) && (longitude <= northEast.getLongitude());
+        boolean isInViewPort = true;
+        if (mapBoundsInfo != null)
+        {
+
+            Coordinate southWest = mapBoundsInfo.getSouthWest();
+            Coordinate northEast = mapBoundsInfo.getNorthEast();
+            Double latitude = latest.getLatitude();
+            Double longitude = latest.getLongitude();
+            isInViewPort = (latitude <= northEast.getLatitude()) && (latitude >= southWest.getLatitude()) && (longitude >= southWest.getLongitude()) && (longitude <= northEast.getLongitude());
+        }
+        return isInViewPort;
     }
 
     public static boolean isApproaching(BusLocationUpdate latest, BusLocationUpdate previous, double stationLat, double stationLong)
@@ -121,7 +128,7 @@ public class BusInfoUtilities
             result = (int) timeToStation;
         }
         //this might be a computational error
-        if(result > MINUTES_IN_A_DAY)
+        if (result > MINUTES_IN_A_DAY)
         {
             result = -1;
         }

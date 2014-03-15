@@ -26,6 +26,7 @@ import org.hibernate.criterion.Criterion;
 import org.hibernate.criterion.Order;
 import org.hibernate.criterion.Restrictions;
 import org.hibernate.criterion.SimpleExpression;
+import org.jetbrains.annotations.Nullable;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -50,7 +51,7 @@ public class BusInfoServlet extends HttpServlet
         ServletUtils.sendResponse(httpServletResponse, getResponseString(stationId, mapBoundsInfo));
     }
 
-    private String getResponseString(String stationId, MapBoundsInfo mapBoundsInfo)
+    private String getResponseString(String stationId, @Nullable MapBoundsInfo mapBoundsInfo)
     {
         Station station = (Station) HibernateServiceProvider.getINSTANCE().getReadService().loadFirst(Station.class, "businessId", stationId);
         final Collection<Object> stationBuses = HibernateServiceProvider.getINSTANCE().getReadService().load(StationBus.class, "station", station);
