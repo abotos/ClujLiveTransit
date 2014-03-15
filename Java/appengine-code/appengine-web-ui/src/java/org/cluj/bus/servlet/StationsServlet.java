@@ -44,7 +44,7 @@ public class StationsServlet extends HttpServlet
 
         for (Station station : stations)
         {
-            allStationInfos.add(StationConverter.getStationInfo((Station) station));
+            allStationInfos.add(StationConverter.getStationInfo(station));
         }
 
         AllStationsDTO response = new AllStationsDTO();

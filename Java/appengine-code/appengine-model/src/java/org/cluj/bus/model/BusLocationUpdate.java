@@ -25,8 +25,8 @@ public class BusLocationUpdate
     @Column
     private Timestamp lastUpdate;
 
-    @OneToOne
-    private Trip trip;
+    @Column
+    private String trip;
 
     @Column
     private Double latitude;
@@ -54,12 +54,12 @@ public class BusLocationUpdate
         this.lastUpdate = lastUpdate;
     }
 
-    public Trip getTrip()
+    public String getTrip()
     {
         return trip;
     }
 
-    public void setTrip(Trip trip)
+    public void setTrip(String trip)
     {
         this.trip = trip;
     }

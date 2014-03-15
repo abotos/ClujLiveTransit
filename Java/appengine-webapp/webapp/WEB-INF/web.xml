@@ -21,6 +21,18 @@
     </servlet>
 
     <servlet>
+        <servlet-name>BusUpdate</servlet-name>
+        <servlet-class>org.cluj.bus.servlet.BusUpdateServlet</servlet-class>
+        <load-on-startup>2</load-on-startup>
+    </servlet>
+
+    <servlet>
+        <servlet-name>BusInfo</servlet-name>
+        <servlet-class>org.cluj.bus.servlet.BusInfoServlet</servlet-class>
+        <load-on-startup>3</load-on-startup>
+    </servlet>
+
+    <servlet>
         <servlet-name>Stations</servlet-name>
         <servlet-class>org.cluj.bus.servlet.StationsServlet</servlet-class>
         <load-on-startup>4</load-on-startup>
@@ -29,6 +41,16 @@
     <servlet-mapping>
         <servlet-name>TripStatus</servlet-name>
         <url-pattern>/tripStatus/*</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>BusUpdate</servlet-name>
+        <url-pattern>/busUpdate/*</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>BusInfo</servlet-name>
+        <url-pattern>/busInfo/*</url-pattern>
     </servlet-mapping>
 
     <servlet-mapping>

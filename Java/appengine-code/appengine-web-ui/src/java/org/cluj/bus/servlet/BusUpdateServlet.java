@@ -24,6 +24,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.sql.Timestamp;
 import java.util.logging.Logger;
 
 public class BusUpdateServlet extends HttpServlet
@@ -41,21 +42,17 @@ public class BusUpdateServlet extends HttpServlet
 
         final Coordinate coordinate = busLocation.getCoordinate();
 
-        final Trip trip = new Trip();
-        trip.setBusId(busLocation.getBusId());
-        trip.setTripId(busLocation.getTripId());
+        final Trip loadedTrip = new JPARepository<>(Trip.class).findFirst("tripId", busLocation.getTripId());
+
         final BusLocationUpdate busLocationUpdate = new BusLocationUpdate();
-        busLocationUpdate.setTrip(trip);
+        busLocationUpdate.setLastUpdate(new Timestamp(System.currentTimeMillis()));
+        busLocationUpdate.setTrip(loadedTrip.getTripId());
         final double latitude = coordinate.getLatitude();
         busLocationUpdate.setLatitude(latitude);
         final double longitude = coordinate.getLongitude();
         busLocationUpdate.setLongitude(longitude);
 
-        final Trip loadedTrip = new JPARepository<>(Trip.class).findFirst("tripId", busLocation.getTripId());
-
-        busLocationUpdate.setTrip(loadedTrip);
-
-        new JPARepository<>(BusLocationUpdate.class).save(busLocationUpdate);
+        new JPARepository<BusLocationUpdate>(BusLocationUpdate.class).save(busLocationUpdate);
 
         LOGGER.info(String.format(BUS_LOCATION_MSG, busLocation.getBusId(), latitude, longitude));
     }
