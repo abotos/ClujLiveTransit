@@ -2,6 +2,6 @@
 <datastore-indexes autoGenerate="true">
     <datastore-index kind="BUS_LOCATION_UPDATE" ancestor="false" source="manual">
         <property name="trip" direction="asc"/>
-        <property name="lastUpdate" direction="asc"/>
+        <property name="lastUpdate" direction="desc"/>
     </datastore-index>
 </datastore-indexes>

@@ -74,7 +74,7 @@ public class BusInfoServlet extends HttpServlet
                 final Root<BusLocationUpdate> root = criteriaQuery.from(BusLocationUpdate.class);
                 criteriaQuery.select(root);
                 final Path<Object> path = root.get("trip");
-                criteriaQuery.where(criteriaBuilder.equal(path, activeTrip.getTripId())).orderBy(criteriaBuilder.asc(root.get("lastUpdate")));
+                criteriaQuery.where(criteriaBuilder.equal(path, activeTrip.getTripId())).orderBy(criteriaBuilder.desc(root.get("lastUpdate")));
                 final List<BusLocationUpdate> busLocationUpdateList = entityManager.createQuery(criteriaQuery).getResultList();
 
                 int busLocationUpdateSize = busLocationUpdateList.size();
