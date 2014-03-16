@@ -56,6 +56,8 @@ public class TripStatusServlet extends HttpServlet
             //move trip to archive
             final Object loadedTrip = HibernateServiceProvider.getINSTANCE().getReadService().load(Trip.class, tripStatus.getTripId());
             ((Trip) loadedTrip).setIsActive(false);
+            final IWriteService writeService = HibernateServiceProvider.getINSTANCE().getWriteService();
+            writeService.save(loadedTrip);
             ServletUtils.sendResponse(httpServletResponse, "OK");
         }
         else

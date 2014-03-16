@@ -44,6 +44,12 @@
         <load-on-startup>5</load-on-startup>
     </servlet>
 
+    <servlet>
+        <servlet-name>Buses</servlet-name>
+        <servlet-class>org.cluj.bus.servlet.BusesServlet</servlet-class>
+        <load-on-startup>6</load-on-startup>
+    </servlet>
+
     <servlet-mapping>
         <servlet-name>TripStatus</servlet-name>
         <url-pattern>/tripStatus/*</url-pattern>
@@ -67,6 +73,11 @@
     <servlet-mapping>
         <servlet-name>Stations</servlet-name>
         <url-pattern>/getAllStations/*</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>Buses</servlet-name>
+        <url-pattern>/getAllBuses/*</url-pattern>
     </servlet-mapping>
 
     <!-- Welcome page -->

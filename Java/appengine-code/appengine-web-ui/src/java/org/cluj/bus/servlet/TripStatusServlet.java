@@ -18,6 +18,7 @@ import org.cluj.bus.pojo.Status;
 import org.cluj.bus.pojo.TripInfo;
 import org.cluj.bus.pojo.TripStatus;
 import org.cluj.bus.services.JPARepository;
+import org.cluj.bus.services.TripRepository;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -45,15 +46,22 @@ public class TripStatusServlet extends HttpServlet
             final JPARepository<Trip> repository = new JPARepository<>(Trip.class);
             repository.save(trip);
 
+            // In-memory repository
+            TripRepository.getInstance().startTrip(busId, tripId);
+
             ServletUtils.sendResponse(httpServletResponse, getResponseString(busId, tripId));
         }
         else if (Status.ENDED == tripStatus.getStatus())
         {
             //move trip to archive
             final JPARepository<Trip> repository = new JPARepository<>(Trip.class);
-            final Trip trip = repository.findFirst("tripId", tripStatus.getTripId());
+            String tripId = tripStatus.getTripId();
+            final Trip trip = repository.findFirst("tripId", tripId);
             trip.setIsActive(false);
             repository.save(trip);
+
+            TripRepository.getInstance().endTrip(tripStatus.getBusId(), tripId);
+
             ServletUtils.sendResponse(httpServletResponse, "OK");
         }
         else

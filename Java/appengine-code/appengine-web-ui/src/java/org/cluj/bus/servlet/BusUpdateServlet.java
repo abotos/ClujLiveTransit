@@ -18,6 +18,7 @@ import org.cluj.bus.model.Trip;
 import org.cluj.bus.pojo.BusLocation;
 import org.cluj.bus.pojo.Coordinate;
 import org.cluj.bus.services.JPARepository;
+import org.cluj.bus.services.TripRepository;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -53,6 +54,8 @@ public class BusUpdateServlet extends HttpServlet
         busLocationUpdate.setLongitude(longitude);
 
         new JPARepository<BusLocationUpdate>(BusLocationUpdate.class).save(busLocationUpdate);
+
+        TripRepository.getInstance().addBusLocationUpdate(busLocationUpdate);
 
         LOGGER.info(String.format(BUS_LOCATION_MSG, busLocation.getBusId(), latitude, longitude));
     }

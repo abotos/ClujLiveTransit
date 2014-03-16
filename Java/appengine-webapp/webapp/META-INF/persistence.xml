@@ -9,6 +9,7 @@
         <class>org.cluj.bus.model.Station</class>
         <class>org.cluj.bus.model.StationBus</class>
         <class>org.cluj.bus.model.Trip</class>
+        <class>org.cluj.bus.model.BusSchedule</class>
         <exclude-unlisted-classes>true</exclude-unlisted-classes>
         <properties>
             <property name="datanucleus.NontransactionalRead" value="true"/>
