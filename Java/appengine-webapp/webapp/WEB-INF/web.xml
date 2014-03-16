@@ -50,6 +50,12 @@
         <load-on-startup>6</load-on-startup>
     </servlet>
 
+    <servlet>
+        <servlet-name>BusSchedule</servlet-name>
+        <servlet-class>org.cluj.bus.servlet.BusScheduleServlet</servlet-class>
+        <load-on-startup>7</load-on-startup>
+    </servlet>
+
     <servlet-mapping>
         <servlet-name>TripStatus</servlet-name>
         <url-pattern>/tripStatus/*</url-pattern>
@@ -78,6 +84,11 @@
     <servlet-mapping>
         <servlet-name>Buses</servlet-name>
         <url-pattern>/getAllBuses/*</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>BusSchedule</servlet-name>
+        <url-pattern>/getBusSchedule/*</url-pattern>
     </servlet-mapping>
 
     <!-- Welcome page -->

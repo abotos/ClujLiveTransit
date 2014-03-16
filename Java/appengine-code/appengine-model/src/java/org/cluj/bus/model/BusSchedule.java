@@ -11,7 +11,6 @@
 package org.cluj.bus.model;
 
 import javax.persistence.*;
-import java.util.Date;
 
 @Entity
 @Table(name = "BUS_SCHEDULE")
@@ -32,7 +31,7 @@ public class BusSchedule
     private String days;
 
     @Column
-    private Date startTime;
+    private String startTime;
 
     public Long getId()
     {
@@ -74,12 +73,12 @@ public class BusSchedule
         this.days = days;
     }
 
-    public Date getStartTime()
+    public String getStartTime()
     {
         return startTime;
     }
 
-    public void setStartTime(Date startTime)
+    public void setStartTime(String startTime)
     {
         this.startTime = startTime;
     }
